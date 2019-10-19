@@ -1,0 +1,2 @@
+# Zyborg.AspNetCore.Authentication.NegotiatedToken
+ 
