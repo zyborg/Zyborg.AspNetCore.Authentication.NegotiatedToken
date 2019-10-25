@@ -4,6 +4,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Zyborg.AspNetCore.Authentication.NegotiatedToken</PackageId>
+    <Authors>EBekker</Authors>
+    <PackageTags>authentication kerberos jwt grpc</PackageTags>
+    <RepositoryUrl>https://github.com/zyborg/Zyborg.AspNetCore.Authentication.NegotiatedToken</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0-*" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="3.0.0-*" />

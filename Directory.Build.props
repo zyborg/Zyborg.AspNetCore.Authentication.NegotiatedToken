@@ -1,0 +1,11 @@
+<Project>
+
+  <PropertyGroup>
+    <ThisYear>$([System.DateTime]::Now.ToString("yyyy"))</ThisYear>
+    <Copyright>Copyright (C) $(ThisYear) Eugene Bekker.</Copyright>
+    <RepositoryUrl>https://github.com/zyborg/Zyborg.AspNetCore.Authentication.NegotiatedToken</RepositoryUrl>
+  </PropertyGroup>
+
+  <Import Project="$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', 'Versions.props'))" />
+
+</Project>
