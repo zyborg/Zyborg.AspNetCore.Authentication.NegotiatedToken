@@ -57,13 +57,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: package
-          path: src/Zyborg.AspNetCore.Authentication.NegotiatedToken/bin/Release
+          path: ./Zyborg.AspNetCore.Authentication.NegotiatedToken/bin/Release
       - name: upload client package as artifact
         if: startsWith(github.ref, 'refs/tags/v=')
         uses: actions/upload-artifact@v1
         with:
           name: package
-          path: src/Zyborg.NegotiatedToken.Client/bin/Release
+          path: ./Zyborg.NegotiatedToken.Client/bin/Release
     
     
 
