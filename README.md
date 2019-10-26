@@ -91,3 +91,14 @@ logic described above.  This client should be configured in concert with
 your own HTTP handler to ensure that Windows Authentication credentials are
 provided when prompted by the token endpoint authenticated by the
 Negotiate scheme.
+
+## Usage
+
+Please see the examples provided for usage:
+
+* Examples.Web:
+  * [Server](examples/Example.Web.Server)
+  * [Client](examples/Example.Web.Client)
+* Examples.GRPC:
+  * [Server](examples/Example.GRPC.Server)
+  * [Client](examples/Example.GRPC.Client)
