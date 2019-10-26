@@ -9,6 +9,8 @@ namespace Negotiate.Client
     {
         static async Task Main(string[] args)
         {
+            var myHostName = Dns.GetHostName();
+
             var v11 = new Version(1, 1);
             var v20 = new Version(2, 0);
 
@@ -26,7 +28,7 @@ namespace Negotiate.Client
 
             foreach (var combo in combos)
             {
-                using var prog = new Program("https://EC2AMAZ-7RM8TFE:5001",
+                using var prog = new Program($"https://{myHostName}:5001",
                     combo.Version, combo.CredMode);
                 Console.WriteLine("==========================");
                 Console.WriteLine("Using HTTP/{0} with Credential Mode = {1}",

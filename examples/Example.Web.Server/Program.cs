@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Example.Web.Server
 {
-    public class Program
+    static class Program
     {
         public static void Main(string[] args)
         {

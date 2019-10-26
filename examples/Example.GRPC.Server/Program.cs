@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Example.GRPC.Server
 {
-    public class Program
+    static class Program
     {
         public static void Main(string[] args)
         {

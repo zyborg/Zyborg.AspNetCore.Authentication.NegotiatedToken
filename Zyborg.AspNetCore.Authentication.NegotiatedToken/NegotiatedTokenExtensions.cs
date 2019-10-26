@@ -97,6 +97,11 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IEndpointConventionBuilder MapGetNegotiatedToken(
             this IEndpointRouteBuilder builder, string pattern)
         {
+            if (builder == null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+
             var options = builder.ServiceProvider.GetService<NegotiatedTokenOptions>();
             if (options == null)
             {

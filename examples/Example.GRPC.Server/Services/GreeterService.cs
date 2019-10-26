@@ -23,7 +23,7 @@ namespace Example.GRPC.Server
         {
             return Task.FromResult(new HelloReply
             {
-                Message = "Hello " + request.Name
+                Message = "Hello " + request?.Name
             });
         }
 
@@ -31,7 +31,7 @@ namespace Example.GRPC.Server
         {
             return Task.FromResult(new DetailsReply
             {
-                Details = GetDetails(context.GetHttpContext(), request.KeepGroupSid)
+                Details = GetDetails(context.GetHttpContext(), request?.KeepGroupSid ?? false)
             });
         }
 
@@ -40,7 +40,7 @@ namespace Example.GRPC.Server
         {
             return Task.FromResult(new DetailsReply
             {
-                Details = GetDetails(context.GetHttpContext(), request.KeepGroupSid)
+                Details = GetDetails(context.GetHttpContext(), request?.KeepGroupSid ?? false)
             });
         }
 

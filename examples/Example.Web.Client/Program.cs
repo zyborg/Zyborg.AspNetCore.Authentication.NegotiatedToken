@@ -7,7 +7,7 @@ namespace Example.Web.Client
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             using var handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true;
