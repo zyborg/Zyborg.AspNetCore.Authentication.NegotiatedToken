@@ -96,9 +96,9 @@ Negotiate scheme.
 
 Please see the examples provided for usage:
 
-* Examples.Web:
+* Example.Web:
   * [Server](examples/Example.Web.Server)
   * [Client](examples/Example.Web.Client)
-* Examples.GRPC:
+* Example.GRPC:
   * [Server](examples/Example.GRPC.Server)
   * [Client](examples/Example.GRPC.Client)

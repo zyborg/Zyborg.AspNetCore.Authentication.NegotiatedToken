@@ -22,6 +22,9 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class NegotiatedTokenExtensions
     {
+        public const string AuthenticationTypeClaimType =
+            "$" + nameof(WindowsIdentity.AuthenticationType);
+
         public static AuthenticationBuilder AddNegotiatedToken(this AuthenticationBuilder builder,
             Action<NegotiatedTokenOptions> configureOptions = null)
         {
@@ -77,7 +80,21 @@ namespace Microsoft.Extensions.DependencyInjection
                             upn = $"{match.Groups[2].Value}@{match.Groups[1].Value}";
                         }
 
+                        var authType = incomingPrincipal.Claims
+                            .FirstOrDefault(c => c.Type == AuthenticationTypeClaimType);
+
+                        // Based on experimentation, the AuthenticationType does not always resolve
+                        // and will throw a UnauthorizedAccessException if accessed from the created
+                        // WindowsIdentity, so here we explicitly pass it in from the previously saved
                         var outgoingIdentity = new WindowsIdentity(upn);
+
+                        if (authType != null)
+                        {
+                            // TODO: this is a cheap way to get the userToken, by creating
+                            // the WinID twice but there should be a cleaner way
+                            outgoingIdentity = new WindowsIdentity(outgoingIdentity.Token, authType.Value);
+                        }
+
                         var outgoingPrincipal = new WindowsPrincipal(outgoingIdentity);
                         ctx.Principal = outgoingPrincipal;
 
@@ -131,11 +148,20 @@ namespace Microsoft.Extensions.DependencyInjection
                 if (tokenDescriptor == null)
                 {
                     var incomingSubject = context.User.Identity as WindowsIdentity;
-                    var incomingName = incomingSubject?.Name ?? context.User.Identity.Name;
-                    //var outgoingSubject = new WindowsIdentity(incomingName);
-                    var outgoingSubject = new ClaimsIdentity(incomingSubject.Claims
+                    var incomingName = incomingSubject?.Name
+                        ?? context.User.Identity.Name;
+                    var incomingType = incomingSubject?.AuthenticationType
+                        ?? context.User.Identity.AuthenticationType;
+                    var claims = incomingSubject.Claims
                         .Where(c => c.Type == WindowsIdentity.DefaultNameClaimType
-                            || c.Type == WindowsIdentity.DefaultRoleClaimType),
+                            || c.Type == WindowsIdentity.DefaultRoleClaimType);
+                    claims = claims.Concat(new[]
+                    {
+                        new Claim(AuthenticationTypeClaimType, incomingType),
+                    });
+
+                    //var outgoingSubject = new WindowsIdentity(incomingName);
+                    var outgoingSubject = new ClaimsIdentity(claims,
                         options.AuthenticationType);
 
                     SigningCredentials sigCreds = null;

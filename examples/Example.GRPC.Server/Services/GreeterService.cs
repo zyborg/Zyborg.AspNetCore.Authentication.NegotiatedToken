@@ -66,6 +66,7 @@ namespace Example.GRPC.Server
             {
                 context.Request.Protocol,
                 context.Request.Path.Value,
+                TypeName = context.User.Identity?.GetType().FullName,
                 context.User.Identity?.IsAuthenticated,
                 context.User.Identity?.Name,
                 context.User.Identity?.AuthenticationType,
