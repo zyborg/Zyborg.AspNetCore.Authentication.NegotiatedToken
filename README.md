@@ -102,3 +102,16 @@ Please see the examples provided for usage:
 * Example.GRPC:
   * [Server](examples/Example.GRPC.Server)
   * [Client](examples/Example.GRPC.Client)
+
+## BONUS -- Call Windows Authenticated gRPC Services from AWS Lambda
+
+* Do you use AWS?
+* Do you use serverless functions via AWS Lambda?
+* Would you like to be able to call _Windows Authenticated gRPC Services
+from your Lambda functions_?
+
+Take a look at
+[this sample project](https://github.com/zyborg/Zyborg.AWS.Lambda.Kerberos#sample4)
+that combines the [Lambda Kerberos](https://github.com/zyborg/Zyborg.AWS.Lambda.Kerberos)
+library with this NegotiatedToken compound authentication scheme to support
+this exact scenario.
