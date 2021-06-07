@@ -4,6 +4,8 @@ Implements a _compound_ authentication mechanism for ASP.NET Core using
 Negotiate and JWT Bearer schemes to support Negotiate (Kerberos)
 authentication in an HTTP/2 context. 
 
+***:star: I appreciate your star, it helps me decide to which OSS projects I should allocate my spare time.***
+
 ---
 
 [![GitHub WorkFlow - CI](https://github.com/zyborg/Zyborg.AspNetCore.Authentication.NegotiatedToken/workflows/CI/badge.svg)](https://github.com/zyborg/Zyborg.AspNetCore.Authentication.NegotiatedToken/actions?CI)
